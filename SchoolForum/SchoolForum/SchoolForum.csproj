@@ -280,6 +280,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\API\" />
+    <Folder Include="Img\" />
+    <Folder Include="Models\ViewModel\" />
+    <Folder Include="Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
