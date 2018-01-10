@@ -200,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SchoolForumController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -281,9 +282,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\SchoolForum\Create.cshtml" />
+    <Content Include="Views\SchoolForum\Delete.cshtml" />
+    <Content Include="Views\SchoolForum\Details.cshtml" />
+    <Content Include="Views\SchoolForum\Edit.cshtml" />
+    <Content Include="Views\SchoolForum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\API\" />
+    <Folder Include="Img\" />
+    <Folder Include="Models\ViewModel\" />
+    <Folder Include="Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
