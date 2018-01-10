@@ -32,7 +32,7 @@ namespace SchoolForum.Models
 
         [Required(ErrorMessage = "Please enter your first name.")]
         [DisplayName("First Name")]
-        [DisplayFormat(NullDisplayText = "Undefined")]
+        [DisplayFormat(NullDisplayText = "Undefined")]        
         [StringLength(100)]
         
         public string LastName { get; set; }
