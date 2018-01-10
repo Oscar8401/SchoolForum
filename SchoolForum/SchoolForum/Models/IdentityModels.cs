@@ -3,6 +3,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SchoolForum.Models
 {
@@ -16,10 +20,34 @@ namespace SchoolForum.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        //adding the new properties
+
+        [Required(ErrorMessage = "Please enter your first name.")]
+        [DisplayName("First Name")]
+        [DisplayFormat(NullDisplayText = "Undefined")]
+        [StringLength(100)]
+        
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Please enter your first name.")]
+        [DisplayName("First Name")]
+        [DisplayFormat(NullDisplayText = "Undefined")]
+        [StringLength(100)]
+        
+        public string LastName { get; set; }
+
+        public string DateOfBirth { get; set; }
+
+        //public virtual ICollection<Message> Messages { get; set; }
+        //public virtual ICollection<Reply> Replys { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //add the connection tho the categories table
+        //public DbSety<Categories> Categoriess { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
