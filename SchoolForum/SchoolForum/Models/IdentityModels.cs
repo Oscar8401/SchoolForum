@@ -57,5 +57,7 @@ namespace SchoolForum.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.Categories> Categories { get; set; }
     }
 }
