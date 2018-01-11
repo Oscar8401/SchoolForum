@@ -46,7 +46,7 @@ namespace SchoolForum.Migrations
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var user = new ApplicationUser
                 {
-                    UserName = "studen@school.se",
+                    UserName = "student@school.se",
                     Email = "student@school.se",
                     FirstName = "Student",
                     LastName = "Student",
