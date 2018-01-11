@@ -1,12 +1,9 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace SchoolForum.Models
 {
@@ -59,5 +56,7 @@ namespace SchoolForum.Models
         }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Categories> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
