@@ -1,5 +1,8 @@
 namespace SchoolForum.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,15 +12,53 @@ namespace SchoolForum.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(SchoolForum.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (!context.Roles.Any(x => x.Name == "teacher"))
+            {
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                roleManager.Create(new IdentityRole { Name = "teacher" });
+            }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            if (!context.Users.Any(y => y.UserName == "teacher@school.se"))
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+
+                var user = new ApplicationUser
+                {
+                    UserName = "teacher@school.se",
+                    Email = "teacher@school.se",
+                    FirstName = "Teacher",
+                    LastName = "Teacher",
+                    DateOfBirth = "1960-01-11"
+                };
+                var result = userManager.Create(user, "password");
+                userManager.AddToRole(user.Id, "teacher");
+            }
+            if (!context.Users.Any(x => x.UserName == "student@school.se"))
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser
+                {
+                    UserName = "studen@school.se",
+                    Email = "student@school.se",
+                    FirstName = "Student",
+                    LastName = "Student",
+                    DateOfBirth = "2008-01-11"
+                };
+                var result = userManager.Create(user, "password");
+            }
+            context.Categories.AddOrUpdate(x => x.Name,
+                new Categories { Name = "Football", Description = "We are looking to create a new football team, you can join if you are between 8 to 15", Members = "Student1, Student2, Student3" },
+                new Categories { Name = "Language", Description = "Do you want to learn a new language from native speaker! you can join the team and teach you language and learn from the others.", Members = "Student4, Student5, Student6" },
+                new Categories { Name = "Photographing", Description = "Do you have a passion for photographing! come and join us", Members = "Student7, Student8, Student9" }
+                );
         }
     }
 }
