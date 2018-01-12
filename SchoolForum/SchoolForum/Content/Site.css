@@ -1,4 +1,5 @@
 ﻿body {
+    font-family: Muli;
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -9,8 +10,12 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+.navbar {
+   background-color:#21618C;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
     white-space: normal;
