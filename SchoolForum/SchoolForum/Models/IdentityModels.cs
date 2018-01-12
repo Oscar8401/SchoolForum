@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -24,14 +25,12 @@ namespace SchoolForum.Models
         [DisplayName("First Name")]
         [DisplayFormat(NullDisplayText = "Undefined")]
         [StringLength(100)]
-        
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name.")]
         [DisplayName("First Name")]
         [DisplayFormat(NullDisplayText = "Undefined")]        
         [StringLength(100)]
-        
         public string LastName { get; set; }
 
         public string DateOfBirth { get; set; }
@@ -43,7 +42,7 @@ namespace SchoolForum.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         //add the connection tho the categories table
-        //public DbSety<Categories> Categoriess { get; set; }
+       // public DbSet<Categories> Categoriess { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -57,6 +56,6 @@ namespace SchoolForum.Models
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Categories> Categories { get; set; }
 
-        public System.Data.Entity.DbSet<SchoolForum.Models.ApplicationUser> ApplicationUsers { get; set; }
+       // public System.Data.Entity.DbSet<SchoolForum.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
