@@ -37,6 +37,8 @@ namespace SchoolForum.Controllers
 
         [Authorize(Roles = "teacher")]
         // GET: SchoolForum/Create
+
+        //[Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             return View();
@@ -48,6 +50,7 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Teacher")]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Members")] Categories categories)
         {
             if (ModelState.IsValid)
@@ -62,6 +65,8 @@ namespace SchoolForum.Controllers
 
         [Authorize(Roles = "teacher")]
         // GET: SchoolForum/Edit/5
+
+        //[Authorize(Roles = "Teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +87,7 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Teacher")]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Members")] Categories categories)
         {
             if (ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace SchoolForum.Controllers
 
         [Authorize(Roles = "teacher")]
         // GET: SchoolForum/Delete/5
+        //[Authorize(Roles = "Teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +120,7 @@ namespace SchoolForum.Controllers
         // POST: SchoolForum/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Teacher")]
         public ActionResult DeleteConfirmed(int id)
         {
             Categories categories = db.Categories.Find(id);
