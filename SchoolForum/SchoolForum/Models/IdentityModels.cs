@@ -49,7 +49,7 @@ namespace SchoolForum.Models
         //public DbSety<Categories> Categoriess { get; set; }
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false) 
         {
         }
 
