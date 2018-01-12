@@ -7,8 +7,8 @@ namespace SchoolForum.Models
         public int Id{ get; set; }
 
       
-        [Display(Name = "Name , Please enter your name")]
-        [Required(ErrorMessage = "Name must not be more than 50 characters")]
+        [Display(Name = "Category Name")]
+        [Required(ErrorMessage = "Please enter category name")]
         [StringLength(50)]
         public string Name { get; set; }
 
