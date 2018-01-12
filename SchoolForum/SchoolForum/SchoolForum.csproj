@@ -214,6 +214,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utility\SchoolForum.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -293,7 +294,6 @@
     <Folder Include="Controllers\API\" />
     <Folder Include="Img\" />
     <Folder Include="Models\ViewModel\" />
-    <Folder Include="Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

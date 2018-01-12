@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SchoolForum.Utility;
+using System.ComponentModel.DataAnnotations;
 
 namespace SchoolForum.Models
 {
@@ -8,6 +9,7 @@ namespace SchoolForum.Models
 
         [Required]
         [StringLength(50)]
+        [MaxWords(2)]
         public string Name { get; set; }
 
         [Required]
