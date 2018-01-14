@@ -46,6 +46,9 @@ namespace SchoolForum.Models
 
         public string UserPassword { get { return FullName + "password"; } }
 
+        [Required(ErrorMessage = "Please select a role.")]
+        public string Role { get; set; }
+
         //public virtual ICollection<Message> Messages { get; set; }
         //public virtual ICollection<Reply> Replys { get; set; }
     }
