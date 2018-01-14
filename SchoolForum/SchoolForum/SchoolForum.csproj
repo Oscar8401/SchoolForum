@@ -285,6 +285,7 @@
     <Content Include="Views\SchoolForum\Details.cshtml" />
     <Content Include="Views\SchoolForum\Edit.cshtml" />
     <Content Include="Views\SchoolForum\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
