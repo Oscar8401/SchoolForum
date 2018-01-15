@@ -43,7 +43,7 @@ namespace SchoolForum.Models
         [Column(TypeName= "datetime2")]
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
-          
+
         //public string Role { get; set; }
 
         //public virtual ICollection<Message> Messages { get; set; }

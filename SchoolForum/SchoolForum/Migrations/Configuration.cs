@@ -27,7 +27,7 @@ namespace SchoolForum.Migrations
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-
+                 
                 var user = new ApplicationUser
                 {
                     UserName = "teacher@school.se",
