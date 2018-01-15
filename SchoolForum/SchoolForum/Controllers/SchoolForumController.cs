@@ -42,12 +42,13 @@ namespace SchoolForum.Controllers
             return View();
         }
 
-        [Authorize(Roles = "teacher")]
+        
         // POST: SchoolForum/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "teacher")]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Members")] Categories categories)
         {
             if (ModelState.IsValid)
@@ -76,10 +77,11 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "teacher")]
+
         // POST: SchoolForum/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Members")] Categories categories)

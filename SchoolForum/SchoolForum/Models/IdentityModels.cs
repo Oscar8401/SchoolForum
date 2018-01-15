@@ -46,7 +46,7 @@ namespace SchoolForum.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         //add the connection tho the categories table
-        //public DbSety<Categories> Categoriess { get; set; }
+         
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -59,5 +59,9 @@ namespace SchoolForum.Models
         }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Categories> Categories { get; set; }
+
+        
+
+        
     }
 }
