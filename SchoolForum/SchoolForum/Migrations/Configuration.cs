@@ -3,6 +3,7 @@ namespace SchoolForum.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
+    using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -10,7 +11,7 @@ namespace SchoolForum.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SchoolForum.Models.ApplicationDbContext context)
@@ -33,7 +34,7 @@ namespace SchoolForum.Migrations
                     Email = "teacher@school.se",
                     FirstName = "Teacher",
                     LastName = "teacher",
-                    DateOfBirth = "1960-01-11"
+                    DateOfBirth = DateTime.Now
                 };
                 var result = userManager.Create(user, "password");
                 userManager.AddToRole(user.Id, "teacher");
@@ -48,7 +49,7 @@ namespace SchoolForum.Migrations
                     Email = "student@school.se",
                     FirstName = "Student",
                     LastName = "student",
-                    DateOfBirth = "2008-01-11"
+                    DateOfBirth = DateTime.Now
                 };
                 var result = userManager.Create(user, "password");
             }

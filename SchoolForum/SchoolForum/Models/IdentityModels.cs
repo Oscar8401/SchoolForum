@@ -23,31 +23,28 @@ namespace SchoolForum.Models
 
         //adding the new properties
 
-        [Required(ErrorMessage = "Please enter your first name.")]
+        [Required(ErrorMessage = "Please enter the first name.")]
         [DisplayName("First Name")]
         [DisplayFormat(NullDisplayText = "Undefined")]
         [StringLength(50)]
+        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Only Alphabets and Numbers allowed.")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Please enter your first name.")]
-        [DisplayName("First Name")]
+        [Required(ErrorMessage = "Please enter the last name.")]
+        [DisplayName("Last Name")]
         [DisplayFormat(NullDisplayText = "Undefined")]        
         [StringLength(100)]
+        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Only Alphabets and Numbers allowed.")]
         public string LastName { get; set; }
 
         public string FullName { get { return FirstName + " " + LastName; } }
 
-        //[Required(ErrorMessage ="Please enter the date of birth")]
-        ////[Column(TypeName= "datetime2")]
-        //[DataType(DataType.DateTime)]
-        public string DateOfBirth { get; set; }
-
-        public string UserEmail { get { return FullName + "@school.se"; } }
-
-        public string UserPassword { get { return FullName + "password"; } }
-
-        [Required(ErrorMessage = "Please select a role.")]
-        public string Role { get; set; }
+        [Required(ErrorMessage ="Please enter the date of birth")]
+        [Column(TypeName= "datetime2")]
+        [DataType(DataType.DateTime)]
+        public DateTime DateOfBirth { get; set; }
+          
+        //public string Role { get; set; }
 
         //public virtual ICollection<Message> Messages { get; set; }
         //public virtual ICollection<Reply> Replys { get; set; }
@@ -67,7 +64,5 @@ namespace SchoolForum.Models
         }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Categories> Categories { get; set; }
-
-       // public System.Data.Entity.DbSet<SchoolForum.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
