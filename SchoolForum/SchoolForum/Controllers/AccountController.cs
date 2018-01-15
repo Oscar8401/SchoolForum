@@ -151,7 +151,7 @@ namespace SchoolForum.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Role=model.Role};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,  FirstName ="Sunisa", LastName = "K"};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
