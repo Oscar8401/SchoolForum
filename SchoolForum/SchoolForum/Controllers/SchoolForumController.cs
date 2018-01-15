@@ -20,7 +20,9 @@ namespace SchoolForum.Controllers
             return View(db.Categories.ToList());
         }
 
+
         // GET: SchoolForum/Details/5
+        [Authorize(Roles = "teacher")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,7 +37,7 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "Teacher")]
+    
         // GET: SchoolForum/Create
 
         [Authorize(Roles = "teacher")]
@@ -63,7 +65,7 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "Teacher")]
+       
         // GET: SchoolForum/Edit/5
 
         [Authorize(Roles = "teacher")]
@@ -85,7 +87,7 @@ namespace SchoolForum.Controllers
         // POST: SchoolForum/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "teacher")]
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "teacher")]
@@ -100,7 +102,7 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "Teacher")]
+      
         // GET: SchoolForum/Delete/5
         [Authorize(Roles = "teacher")]
         public ActionResult Delete(int? id)
@@ -117,7 +119,7 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "Teacher")]
+     
         // POST: SchoolForum/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
