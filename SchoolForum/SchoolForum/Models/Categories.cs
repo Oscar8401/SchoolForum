@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SchoolForum.Utility;
+using System.ComponentModel.DataAnnotations;
 
 namespace SchoolForum.Models
 {
@@ -10,6 +11,7 @@ namespace SchoolForum.Models
         [Display(Name = "Category Name")]
         [Required(ErrorMessage = "Please enter category name")]
         [StringLength(50)]
+        [MaxWords(2)]
         public string Name { get; set; }
 
         [Display(Name = "Description")]

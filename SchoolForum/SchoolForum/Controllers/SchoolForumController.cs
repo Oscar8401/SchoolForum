@@ -35,8 +35,10 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         // GET: SchoolForum/Create
+
+        [Authorize(Roles = "teacher")]
         public ActionResult Create()
         {
             return View();
@@ -61,8 +63,10 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         // GET: SchoolForum/Edit/5
+
+        [Authorize(Roles = "teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,13 +81,14 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-
+        
         // POST: SchoolForum/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "teacher")]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Members")] Categories categories)
         {
             if (ModelState.IsValid)
@@ -95,8 +100,9 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         // GET: SchoolForum/Delete/5
+        [Authorize(Roles = "teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,10 +117,11 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         // POST: SchoolForum/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "teacher")]
         public ActionResult DeleteConfirmed(int id)
         {
             Categories categories = db.Categories.Find(id);

@@ -3,8 +3,6 @@ namespace SchoolForum.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -28,13 +26,13 @@ namespace SchoolForum.Migrations
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-
+                 
                 var user = new ApplicationUser
                 {
                     UserName = "teacher@school.se",
                     Email = "teacher@school.se",
                     FirstName = "Teacher",
-                    LastName = "Teacher",
+                    LastName = "teacher",
                     DateOfBirth = "1960-01-11"
                 };
                 var result = userManager.Create(user, "password");
@@ -46,18 +44,20 @@ namespace SchoolForum.Migrations
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var user = new ApplicationUser
                 {
-                    UserName = "studen@school.se",
+                    UserName = "student@school.se",
                     Email = "student@school.se",
                     FirstName = "Student",
-                    LastName = "Student",
+                    LastName = "student",
                     DateOfBirth = "2008-01-11"
                 };
                 var result = userManager.Create(user, "password");
             }
             context.Categories.AddOrUpdate(x => x.Name,
-                new Categories { Name = "Football", Description = "We are looking to create a new football team, you can join if you are between 8 to 15", Members = "Student1, Student2, Student3" },
-                new Categories { Name = "Language", Description = "Do you want to learn a new language from native speaker! you can join the team and teach you language and learn from the others.", Members = "Student4, Student5, Student6" },
-                new Categories { Name = "Photographing", Description = "Do you have a passion for photographing! come and join us", Members = "Student7, Student8, Student9" }
+                new Categories { Name = "Football", Description = "We are looking to create a new football team.", Members = "John" },
+                new Categories { Name = "English", Description = "Do you want to learn a new language from native speaker.", Members = "Brano" },
+                new Categories { Name = "Franch", Description = "Do you want to learn a new language from native speaker.", Members = "Mathew" },
+                new Categories { Name = "Swimming", Description = "Do you want to learn a new language from native speaker.", Members = "Kim" },
+                new Categories { Name = "photographering", Description = "Do you have a passion for photographering!.", Members = "Samantha" }
                 );
         }
     }

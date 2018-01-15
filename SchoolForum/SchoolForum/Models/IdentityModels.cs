@@ -1,12 +1,12 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace SchoolForum.Models
 {
@@ -26,18 +26,28 @@ namespace SchoolForum.Models
         [Required(ErrorMessage = "Please enter your first name.")]
         [DisplayName("First Name")]
         [DisplayFormat(NullDisplayText = "Undefined")]
-        [StringLength(100)]
-        
+        [StringLength(50)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name.")]
         [DisplayName("First Name")]
         [DisplayFormat(NullDisplayText = "Undefined")]        
         [StringLength(100)]
-        
         public string LastName { get; set; }
+        
+        public string FullName { get { return FirstName + " " + LastName; } }
 
+        //[Required(ErrorMessage ="Please enter the date of birth")]
+        ////[Column(TypeName= "datetime2")]
+        //[DataType(DataType.DateTime)]
         public string DateOfBirth { get; set; }
+
+        public string UserEmail { get { return FullName + "@school.se"; } }
+
+        public string UserPassword { get { return FullName + "password"; } }
+
+        //[Required(ErrorMessage = "Please select a role.")]
+        //public string Role { get; set; }
 
         //public virtual ICollection<Message> Messages { get; set; }
         //public virtual ICollection<Reply> Replys { get; set; }
@@ -46,7 +56,8 @@ namespace SchoolForum.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         //add the connection tho the categories table
-         
+        //public DbSety<Categories> Categoriess { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -59,9 +70,5 @@ namespace SchoolForum.Models
         }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Categories> Categories { get; set; }
-
-        
-
-        
     }
 }

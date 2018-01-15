@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using SchoolForum.Utility;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SchoolForum.Models
@@ -64,6 +67,7 @@ namespace SchoolForum.Models
 
     public class RegisterViewModel
     {
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +83,9 @@ namespace SchoolForum.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        //[Required(ErrorMessage ="Please select a role.")]
+        //public string Role { get; set; }
     }
 
     public class ResetPasswordViewModel
