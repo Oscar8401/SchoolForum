@@ -33,3 +33,11 @@ textarea {
     border-color: #204d74;
     color:#ffffff;
 }
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #d9ebfc;
+}

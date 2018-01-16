@@ -17,7 +17,7 @@ namespace SchoolForum.Models
         public string Name { get; set; }
 
         [Required]
-        [StringLength(500, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 30 characters.")]
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 30 characters.")]
         [MaxWords(100, ErrorMessage = "Description can not be more than 2 words.")]
         [DisplayName("Description")]
         [DisplayFormat(NullDisplayText = "Undefined")]

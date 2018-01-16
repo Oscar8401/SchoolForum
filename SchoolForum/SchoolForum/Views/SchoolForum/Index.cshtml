@@ -4,9 +4,15 @@
     ViewBag.Title = "Index";
 }
 
+<div class="jumbotron">
+    <div class="container">
+        ...
+    </div>
+</div>
+
+
+
 <h2>Classes</h2>
-
-
     @if (User.IsInRole("teacher"))
     {
      @Html.ActionLink("Category", "Create", null, new { @class="btn btn-primary glyphicon glyphicon-plus"})     
@@ -20,9 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Members)
-         </th>
+         </th>*@
         <th></th>
     </tr>
 
@@ -34,9 +40,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Members)
-        </td>
+        </td>*@
         <td>
             @if (User.IsInRole("teacher"))
             {
