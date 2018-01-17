@@ -27,6 +27,8 @@ namespace SchoolForum.Models
 
         public string Members{ get; set; }
 
+        //public string SearchTerm { get; set; }
+
         //public virtual Message message { get; set; }
         public ICollection<Message> messages { get; set; }
         //public ICollection<Categories> AttendedCategory { get; set; }

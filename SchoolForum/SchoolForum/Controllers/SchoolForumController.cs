@@ -15,9 +15,9 @@ namespace SchoolForum.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: SchoolForum
-        public ActionResult Index()
+        public ActionResult Index(string SearchTerm)
         {
-            return View(db.Categories.ToList());
+            return View(db.Categories.Where(x => x.Name.Contains(SearchTerm)|| SearchTerm == null).ToList());
         }
 
         // GET: SchoolForum/Details/5
