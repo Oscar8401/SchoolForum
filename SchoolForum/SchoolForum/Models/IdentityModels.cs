@@ -21,8 +21,7 @@ namespace SchoolForum.Models
             return userIdentity;
         }
 
-        //adding the new properties
-
+ 
         [Required(ErrorMessage = "Please enter the first name.")]
         [DisplayName("First Name")]
         [DisplayFormat(NullDisplayText = "Undefined")]
@@ -44,11 +43,7 @@ namespace SchoolForum.Models
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
 
-        //public string Role { get; set; }
-
-        //public virtual ICollection<Message> Messages { get; set; }
-        //public virtual ICollection<Reply> Replys { get; set; }
-    }
+     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -64,5 +59,9 @@ namespace SchoolForum.Models
         }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Categories> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.Message> Messages { get; set; }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.Reply> Replies { get; set; }
     }
 }
