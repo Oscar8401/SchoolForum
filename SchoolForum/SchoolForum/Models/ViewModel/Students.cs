@@ -15,6 +15,7 @@ namespace SchoolForum.Models.ViewModel
         public string LastName { get; set; }
 
         [Column(TypeName="datetime2")]
+         
         public DateTime DateOfBirth { get; set; }
 
         public string Email { get; set; }

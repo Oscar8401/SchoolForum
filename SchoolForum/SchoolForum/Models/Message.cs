@@ -26,5 +26,11 @@ namespace SchoolForum.Models
         [DisplayName("Text")]
         [DisplayFormat(NullDisplayText = "Undefined")]
         public string Text { get; set; }
+
+
+        public ICollection<Categories> AttendedCategory { get; set; }
+        public ICollection<ApplicationUser> users { get; set; }
+        public virtual Reply Reply {get; set;}
+
     }
 }

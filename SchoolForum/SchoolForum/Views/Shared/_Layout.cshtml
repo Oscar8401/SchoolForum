@@ -24,6 +24,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @Html.ActionLink("Message", "Index", "Messages")
                     
                     @if (User.IsInRole("teacher"))
                     {
