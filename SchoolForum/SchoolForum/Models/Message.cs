@@ -27,10 +27,14 @@ namespace SchoolForum.Models
         [DisplayFormat(NullDisplayText = "Undefined")]
         public string Text { get; set; }
 
+        public DateTime PostingDate { get; set; }
 
-        public ICollection<Categories> AttendedCategory { get; set; }
-        public ICollection<ApplicationUser> users { get; set; }
-        public virtual Reply Reply {get; set;}
+
+
+        public virtual ApplicationUser users { get; set; }
+        public ICollection<Reply> replies { get; set; }
+        //public virtual Reply replies { get; set; }
+        public virtual Categories categories { get; set; }
 
     }
 }

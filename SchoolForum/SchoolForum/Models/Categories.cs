@@ -27,8 +27,9 @@ namespace SchoolForum.Models
 
         public string Members{ get; set; }
 
-        public virtual Message message { get; set; }
-        public ICollection<Categories> AttendedCategory { get; set; }
+        //public virtual Message message { get; set; }
+        public ICollection<Message> messages { get; set; }
+        //public ICollection<Categories> AttendedCategory { get; set; }
         public ICollection<ApplicationUser> user { get; set; }
 
         //public ICollection<string> Student { get; set; }

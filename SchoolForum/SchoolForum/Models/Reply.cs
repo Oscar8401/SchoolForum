@@ -11,7 +11,13 @@ namespace SchoolForum.Models
 
         public string TextReply { get; set; }
 
-        public ICollection<Message> Message { get; set; }
-        public ICollection<ApplicationUser> user { get; set; }
+        public DateTime ReplyingDate { get; set; }
+
+
+
+        //public ICollection<Message> Message { get; set; }
+        public virtual Message messages { get; set; }
+        //public ICollection<ApplicationUser> user { get; set; }
+        public virtual ApplicationUser users { get; set; }
     }
 }

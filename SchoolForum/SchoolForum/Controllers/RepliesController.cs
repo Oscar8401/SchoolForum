@@ -20,20 +20,20 @@ namespace SchoolForum.Controllers
             return View(db.Replies.ToList());
         }
 
-        // GET: Replies/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reply reply = db.Replies.Find(id);
-            if (reply == null)
-            {
-                return HttpNotFound();
-            }
-            return View(reply);
-        }
+        //// GET: Replies/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Reply reply = db.Replies.Find(id);
+        //    if (reply == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(reply);
+        //}
 
         // GET: Replies/Create
         public ActionResult Create()
@@ -46,7 +46,7 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Text")] Reply reply)
+        public ActionResult Create([Bind(Include = "Id,TextReply")] Reply reply)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Text")] Reply reply)
+        public ActionResult Edit([Bind(Include = "Id,TextReply")] Reply reply)
         {
             if (ModelState.IsValid)
             {
