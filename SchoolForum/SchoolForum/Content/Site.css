@@ -52,3 +52,18 @@ textarea {
     background: #3f7bae;
 }
 
+.removeButton {
+      color: #700;
+      cursor: pointer;
+        
+}
+.removeButton:hover{
+    color: #f00;
+}
+.addRow{
+  color: #070;
+  cursor: pointer;
+}
+.addRow:hover{
+    color: #0b0;
+}

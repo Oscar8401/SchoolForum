@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SchoolForum</title>
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -19,17 +20,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
-                @Html.ActionLink("SchoolForum", "Index", "SchoolForum", new { area = "" }, new { @class = "navbar-brand" })
+                 @Html.ActionLink(" SchoolForum", "Index", "SchoolForum", new { area = "" }, new { @class = "navbar-brand fa fa-home" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @Html.ActionLink("Message", "Index", "Messages")
-                    
                     @if (User.IsInRole("teacher"))
                     {
-                        <li>@Html.ActionLink("Users", "Index", "Students")</li>
+                        <li>@Html.ActionLink(" Users", "Index", "Students", new { @class= "fa fa-user"})</li>
                     }
+                    <li>@Html.ActionLink(" Message", "Index", "Messages", new { @class= "fa fa-envelope" })</li>
 
                    
                 </ul>
@@ -41,6 +40,8 @@
         @RenderBody()
         <hr />
         <footer>
+            <i class="fa fa-linkedin"></i>
+            <i class="fa fa-github-alt"></i>
             <p>&copy; @DateTime.Now.Year - SchoolForum</p>
         </footer>
     </div>
