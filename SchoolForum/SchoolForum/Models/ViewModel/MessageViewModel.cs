@@ -20,7 +20,7 @@ namespace SchoolForum.Models.ViewModel
         public DateTime ReplyingDate { get; set; }
 
         public DateTime PostingDate { get; set; }
-
+                                            
         //public ICollection<Message> message { get; set; }
         //public ICollection<Reply> replies { get; set; }
         //public ICollection<Categories> categories { get; set; }
