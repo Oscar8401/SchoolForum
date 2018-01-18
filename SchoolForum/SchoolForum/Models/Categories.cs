@@ -9,7 +9,7 @@ namespace SchoolForum.Models
 
       
         [Display(Name = "Category Name")]
-        [Required(ErrorMessage = "Please enter category name")]
+        [Required(ErrorMessage = "Please enter category name")] 
         [RegularExpression(@"^[a-zA-Z0-9'' ']+$", ErrorMessage = "Special characters not allowed")]
         [StringLength(50)]
         [MaxWords(2)]
