@@ -1,4 +1,5 @@
 ﻿using SchoolForum.Utility;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SchoolForum.Models
@@ -7,18 +8,19 @@ namespace SchoolForum.Models
     {
         public int Id{ get; set; }
 
-      
-        [Display(Name = "Category Name")]
-        [Required(ErrorMessage = "Please enter category name")] 
-        [RegularExpression(@"^[a-zA-Z0-9'' ']+$", ErrorMessage = "Special characters not allowed")]
-        [StringLength(50)]
-        [MaxWords(2)]
+        [Required(ErrorMessage = "Requird")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 30 characters.")]
+        [MaxWords(2, ErrorMessage = "Name can not be more than 2 words.")]
+        [DisplayName("Name")]
+        [DisplayFormat(NullDisplayText = "Undefined")]
+        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Only Alphabets and Numbers allowed.")]
         public string Name { get; set; }
 
-        [Display(Name = "Description")]
-        [Required(ErrorMessage = "Please enter description")]
-        [RegularExpression(@"^[a-zA-Z0-9'' ']+$", ErrorMessage = "Special characters not allowed")]
-        [StringLength(500)]
+        [Required]
+        [StringLength(500, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 30 characters.")]
+        [MaxWords(100, ErrorMessage = "Description can not be more than 2 words.")]
+        [DisplayName("Description")]
+        [DisplayFormat(NullDisplayText = "Undefined")]
         public string Description { get; set; }
 
         [RegularExpression(@"^[a-zA-Z0-9'' ']+$", ErrorMessage = "Special characters not allowed")]

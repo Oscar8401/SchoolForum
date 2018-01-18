@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolForum.Models
 {
@@ -84,7 +85,14 @@ namespace SchoolForum.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        //[Required(ErrorMessage ="Please select a role.")]
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [Column(TypeName = "datetime2")]
+        public DateTime DateOfBirth { get; set; }
+
         //public string Role { get; set; }
     }
 
