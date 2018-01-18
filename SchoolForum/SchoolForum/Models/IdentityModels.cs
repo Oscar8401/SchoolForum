@@ -60,7 +60,7 @@ namespace SchoolForum.Models
 
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false) 
         {
         }
 
