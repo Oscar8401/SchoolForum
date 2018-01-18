@@ -63,5 +63,7 @@ namespace SchoolForum.Models
         public System.Data.Entity.DbSet<SchoolForum.Models.Message> Messages { get; set; }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Reply> Replies { get; set; }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.ViewModel.MessageViewModel> MessageViewModels { get; set; }
     }
 }

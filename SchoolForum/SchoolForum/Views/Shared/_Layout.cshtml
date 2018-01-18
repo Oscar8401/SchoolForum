@@ -26,9 +26,9 @@
                 <ul class="nav navbar-nav">
                     @if (User.IsInRole("teacher"))
                     {
-                        <li>@Html.ActionLink(" Users", "Index", "Students", new { @class= "fa fa-user"})</li>
+                        <li>@Html.ActionLink(" Users", "Index", "Students",new { area = ""}, new { @class= "fa fa-user"})</li>
                     }
-                    <li>@Html.ActionLink(" Message", "Index", "Messages", new { @class= "fa fa-envelope" })</li>
+                    <li>@Html.ActionLink(" Message", "Index", "MessageViewModels", new { area= ""}, new { @class="fa fa-envelope"})</li>
 
                    
                 </ul>
