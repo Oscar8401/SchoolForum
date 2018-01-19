@@ -89,11 +89,11 @@ namespace SchoolForum.Models
 
         public string LastName { get; set; }
 
-        [DataType(DataType.DateTime)]
         [Column(TypeName = "datetime2")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
-        //public string Role { get; set; }
+         
     }
 
     public class ResetPasswordViewModel

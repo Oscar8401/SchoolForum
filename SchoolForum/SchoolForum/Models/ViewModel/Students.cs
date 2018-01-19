@@ -8,6 +8,8 @@ namespace SchoolForum.Models.ViewModel
 {
     public class Students
     {
+        //public ICollection<Categories> category;
+
         public string Id { get; set; }
 
         public string FirstName { get; set; }
@@ -26,10 +28,12 @@ namespace SchoolForum.Models.ViewModel
 
         public string Role { get; set; }
 
-        public ICollection<Categories> AttendedCategory { get; set; }
-
-        public ICollection<string> Student { get; set; }
+        //public string category { get; set; }
         public ICollection<string> StudentRole { get; internal set; }
+        //public ICollection<Categories> AttendedCategory { get; set; }
+
+        //public ICollection<string> Student { get; set; }
+        //public ICollection<string> StudentRole { get; internal set; }
 
         public Students() {}
         public Students(ApplicationUser x)
@@ -39,6 +43,10 @@ namespace SchoolForum.Models.ViewModel
             LastName = x.LastName;
             Email = x.Email;
             DateOfBirth = x.DateOfBirth;
+            //category = x.category;
+             
+            
+            
 
 
         }

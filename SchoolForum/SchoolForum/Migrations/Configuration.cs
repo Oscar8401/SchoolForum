@@ -34,7 +34,8 @@ namespace SchoolForum.Migrations
                     Email = "teacher@school.se",
                     FirstName = "Teacher",
                     LastName = "teacher",
-                    DateOfBirth = DateTime.Now
+                    DateOfBirth = DateTime.Now,
+                    //Role = "Teacher"
                 };
                 var result = userManager.Create(user, "password");
                 userManager.AddToRole(user.Id, "teacher");
@@ -49,7 +50,8 @@ namespace SchoolForum.Migrations
                     Email = "student@school.se",
                     FirstName = "Student",
                     LastName = "student",
-                    DateOfBirth = DateTime.Now
+                    DateOfBirth = DateTime.Now,
+                    //Role = "Student"
                 };
                 var result = userManager.Create(user, "password");
             }

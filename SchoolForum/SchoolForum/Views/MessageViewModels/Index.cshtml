@@ -14,7 +14,7 @@
 <table class="table table-responsive table-responsive table-striped">
     <tr>       
         <th>
-            <h4>Message</h4>            
+            <h3>Message</h3>            
         </th>
         <th>
             @if (User.Identity.IsAuthenticated)
@@ -30,9 +30,17 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <span class="badge">@Html.DisplayFor(modelItem => item.PostingDate)</span>
-                    @Html.DisplayFor(modelItem => item.Title)<br />
-                    @Html.DisplayFor(modelItem => item.Text)
-                    <ul class="list-group">
+                 <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                    @Html.DisplayFor(modelItem => item.Text)<br />
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-edit" })<span></span>
+
+                                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove" })<span></span>
+                                @Html.ActionLink(" ", "Reply", new { id = item.Id }, new { @class = "fa fa-reply" })<span></span>
+                                @*@Html.ActionLink(" ", "Create", "Replies", null, new { @class = "fa fa-reply" })<span></span>*@
+                    }
+                    @*<ul class="list-group">
                         <li class="list-group-item">
                             @using (Html.BeginForm("Reply", "MessageViewModels", FormMethod.Post))
                             {
@@ -41,22 +49,9 @@
                                  
                             }
 
-                            @*<input type="submit" value="Submit" />*@
-
-
-
-
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-edit" })<span></span>
-                                
-                                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove" })<span></span>
-                                @Html.ActionLink(" ", "Reply", new { id = item.Id}, new { @class = "fa fa-reply" })<span></span>
-                                @*@Html.ActionLink(" ", "Create", "Replies", null, new { @class = "fa fa-reply" })<span></span>*@
-                            }
-                        
+                            <input type="submit" value="Submit" />                      
                         </li>
-                    </ul>
+                    </ul>*@
                 </li>
             </ul>
         </td>

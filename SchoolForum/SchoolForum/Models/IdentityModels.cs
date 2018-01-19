@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,6 +44,11 @@ namespace SchoolForum.Models
         [Column(TypeName= "datetime2")]
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
+
+        
+        public virtual ICollection<Message> messages { get; set; }
+        public virtual ICollection<Categories> category { get; set; }
+        public virtual ICollection<Reply> replies { get; set; }
 
      }
 
