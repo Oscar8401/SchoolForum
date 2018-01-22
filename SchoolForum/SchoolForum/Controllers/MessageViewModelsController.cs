@@ -60,7 +60,7 @@ namespace SchoolForum.Controllers
         }
 
         // GET: MessageViewModels/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id)     
         {
             if (id == null)
             {
