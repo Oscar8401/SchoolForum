@@ -31,8 +31,7 @@ namespace SchoolForum.Models.ViewModel
 
         public int NumberOfMessages { get; set; }
 
-        public IEnumerable<ApplicationUser> Users { get; set; }
-        public string User { get; set; }
+         public string User { get; set; }
 
         [Column(TypeName = "datetime2")]
         [DisplayName("PostingDate")]
