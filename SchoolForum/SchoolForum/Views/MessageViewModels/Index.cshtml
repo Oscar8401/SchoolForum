@@ -3,13 +3,26 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<div class="jumbotron">
+    <div class="container">
+        <div class="text-center animated jackInTheBox">
+            <p>
+                <h3>Press</h3>
+                <i class="glyphicon glyphicon-plus"></i> to create a new message.<br />
+                <i>OR</i><br />
+                <i class="glyphicon glyphicon-arrow-left"></i> to go back to the categories list.
+            </p>
+        </div>
+    </div>
+</div>
+<span>
+    @Html.ActionLink(" ", "Index", "SchoolForum", new { area = "" }, new { @class = "glyphicon glyphicon-arrow-left" })<span> </span>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus" })
+    }
+</span>
+<table class="table table-hover table-responsive table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -17,9 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Text)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.NumberOfMessages)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.User)
         </th>
@@ -40,9 +53,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Text)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.NumberOfMessages)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.User)
         </td>
@@ -53,9 +66,12 @@
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-edit" })<span></span>
+                @*@Html.ActionLink(" ", "Details", new { id=item.Id }, new { @clss= "glyphicon glyphicon-align-justify"})<span></span>*@
+                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash" })<span></span>
+            }
         </td>
     </tr>
 }
