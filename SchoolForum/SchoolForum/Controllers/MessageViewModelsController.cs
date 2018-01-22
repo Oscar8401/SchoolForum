@@ -18,7 +18,7 @@ namespace SchoolForum.Controllers
         // GET: MessageViewModels
         public ActionResult Index()
         {
-            return View(db.MessageViewModels.ToList());
+            return View(db.MessagesViewModels.ToList());
         }
 
         // GET: MessageViewModels/Details/5
@@ -28,12 +28,12 @@ namespace SchoolForum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageViewModel messageViewModel = db.MessageViewModels.Find(id);
-            if (messageViewModel == null)
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            if (messagesViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(messageViewModel);
+            return View(messagesViewModel);
         }
 
         // GET: MessageViewModels/Create
@@ -47,16 +47,16 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Text,Textreply,PostingDate")] MessageViewModel messageViewModel)
+        public ActionResult Create([Bind(Include = "Id,Title,Text,NumberOfMessages,User,PostingDate,CategoryName")] MessagesViewModel messagesViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.MessageViewModels.Add(messageViewModel);
+                db.MessagesViewModels.Add(messagesViewModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(messageViewModel);
+            return View(messagesViewModel);
         }
 
         // GET: MessageViewModels/Edit/5
@@ -66,12 +66,12 @@ namespace SchoolForum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageViewModel messageViewModel = db.MessageViewModels.Find(id);
-            if (messageViewModel == null)
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            if (messagesViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(messageViewModel);
+            return View(messagesViewModel);
         }
 
         // POST: MessageViewModels/Edit/5
@@ -79,15 +79,15 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Text,Textreply,PostingDate")] MessageViewModel messageViewModel)
+        public ActionResult Edit([Bind(Include = "Id,Title,Text,NumberOfMessages,User,PostingDate,CategoryName")] MessagesViewModel messagesViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(messageViewModel).State = EntityState.Modified;
+                db.Entry(messagesViewModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(messageViewModel);
+            return View(messagesViewModel);
         }
 
         // GET: MessageViewModels/Delete/5
@@ -97,12 +97,12 @@ namespace SchoolForum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageViewModel messageViewModel = db.MessageViewModels.Find(id);
-            if (messageViewModel == null)
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            if (messagesViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(messageViewModel);
+            return View(messagesViewModel);
         }
 
         // POST: MessageViewModels/Delete/5
@@ -110,39 +110,11 @@ namespace SchoolForum.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MessageViewModel messageViewModel = db.MessageViewModels.Find(id);
-            db.MessageViewModels.Remove(messageViewModel);
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            db.MessagesViewModels.Remove(messagesViewModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
-
-        // GET: MessageViewModels/Reply
-        public ActionResult Rely()
-        {
-            return View();
-        }
-
-        // POST: MessageViewModels/Reply
-        [HttpPost]
-        public ActionResult Reply( MessageViewModel messageViewModel)
-        {
-            int Id = messageViewModel.Id;
-            string Textreply = messageViewModel.Textreply;
-            //if (ModelState.IsValid)
-            //{
-            //    db.MessageViewModels.Add(messageViewModel);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(messageViewModel);
-            return View(messageViewModel);
-        }
-
-
-
 
         protected override void Dispose(bool disposing)
         {
