@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SchoolForum.Models.ViewModel
 {
@@ -32,7 +33,7 @@ namespace SchoolForum.Models.ViewModel
         public int NumberOfMessages { get; set; }
 
          public string User { get; set; }
-
+ 
         [Column(TypeName = "datetime2")]
         [DisplayName("PostingDate")]
         [DataType(DataType.Date)]
@@ -40,6 +41,7 @@ namespace SchoolForum.Models.ViewModel
         public DateTime PostingDate { get; set; }
 
         public string CategoryName { get; set; }
+        public IEnumerable<Categories> CategoryNames { get; set; }
 
         public MessagesViewModel(){}
 

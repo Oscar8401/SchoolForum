@@ -13,7 +13,7 @@ namespace SchoolForum.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201801222245543_init"; }
+            get { return "201801222324122_init"; }
         }
         
         string IMigrationMetadata.Source
