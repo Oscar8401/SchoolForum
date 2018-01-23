@@ -26,8 +26,20 @@
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
     </div>
-
-
+    <div class="form-group">
+        @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Role, new { @class = "form-control" })
+        </div>
+    </div>
+    @*<div class="form-group">
+            @Html.LabelFor(m => m.Role, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => Model.Role, new SelectList(Model.Role, "Id", "ClassType"), htmlAttributes:new { @class = "form-control", id="Role" })
+                @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    
 
 
     <div class="form-group">
@@ -44,11 +56,14 @@
         </div>
     </div>
 
-
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.Role)
+        @Html.DropDownListFor(m => m.Role, new SelectList(Model.Roles, "Id", "ClassType", "", new { @class = "form-control" }))
+    </div>*@
     @*<div class="form-group">
         @Html.LabelFor(m => m.Role, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Role, new SelectList(Model.Role, "Id", "ClassType"), "", new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Role, new SelectList(Model.Role, "Id", "Role"), "", new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" }) 
         </div>
     </div>*@

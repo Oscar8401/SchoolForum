@@ -53,7 +53,8 @@ namespace SchoolForum.Migrations
                 };
                 var result = userManager.Create(user, "password");
             }
-            context.Categories.AddOrUpdate(x => x.Name,
+            
+                context.Categories.AddOrUpdate(x => x.Name,
                 new Categories { Name = "Football", Description = "We are looking to create a new football team.", Members = "John" },
                 new Categories { Name = "English", Description = "Do you want to learn a new language from native speaker.", Members = "Brano" },
                 new Categories { Name = "Franch", Description = "Do you want to learn a new language from native speaker.", Members = "Mathew" },

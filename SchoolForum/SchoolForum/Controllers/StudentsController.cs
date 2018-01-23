@@ -51,7 +51,7 @@ namespace SchoolForum.Controllers
             return View(member);
         }
 
-
+           
 
 
         protected override void Dispose(bool disposing)

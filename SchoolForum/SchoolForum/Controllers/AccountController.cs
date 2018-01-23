@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SchoolForum.Models;
@@ -15,13 +17,16 @@ namespace SchoolForum.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext _context;
         private ApplicationSignInManager _signInManager;     
         private ApplicationUserManager _userManager;
 
+
+       
         public AccountController()
         {
         }
-
+        
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
@@ -137,8 +142,10 @@ namespace SchoolForum.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
+     
         public ActionResult Register()
         {
+            
             return View();
         }
 
@@ -151,7 +158,7 @@ namespace SchoolForum.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName, DateOfBirth = model.DateOfBirth/*, Role = model.Role*/};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName, DateOfBirth = model.DateOfBirth, Role = model.Role};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -426,7 +433,8 @@ namespace SchoolForum.Controllers
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
+        //private List<IdentityRole> Role;
+        
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -479,6 +487,15 @@ namespace SchoolForum.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+        }
+       
+        private class AcoountViewModel
+        {
+            public AcoountViewModel()
+            {
+            }
+
+            public List<IdentityRole> Role { get; internal set; }
         }
         #endregion
     }

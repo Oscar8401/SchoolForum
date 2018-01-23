@@ -38,6 +38,7 @@ namespace SchoolForum.Models.ViewModel
             LastName = x.LastName;
             Email = x.Email;
             DateOfBirth = x.DateOfBirth;
+            //Role = x.Roles;
 
 
         }

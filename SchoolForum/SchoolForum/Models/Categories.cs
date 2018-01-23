@@ -8,7 +8,7 @@ namespace SchoolForum.Models
     {
         public int Id{ get; set; }
 
-        [Required(ErrorMessage = "Requird")]
+        [Required(ErrorMessage = "Required")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 30 characters.")]
         [MaxWords(2, ErrorMessage = "Name can not be more than 2 words.")]
         [DisplayName("Name")]

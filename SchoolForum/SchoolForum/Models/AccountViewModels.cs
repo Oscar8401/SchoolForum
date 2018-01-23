@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace SchoolForum.Models
 {
@@ -82,7 +83,7 @@ namespace SchoolForum.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string FirstName { get; set; }
@@ -93,7 +94,9 @@ namespace SchoolForum.Models
         [Column(TypeName = "datetime2")]
         public DateTime DateOfBirth { get; set; }
 
-        //public string Role { get; set; }
+        public string Role { get; set; }
+        public ICollection<ApplicationUser> Roles { get; set; }
+     
     }
 
     public class ResetPasswordViewModel
@@ -111,7 +114,7 @@ namespace SchoolForum.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
