@@ -1,4 +1,5 @@
-﻿using SchoolForum.Utility;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using SchoolForum.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -92,6 +93,9 @@ namespace SchoolForum.Models
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
+
+        //public int RoleId { get; set; }
+        //public IEnumerable<IdentityRole> Roles { get; set; }
 
          
     }

@@ -20,11 +20,15 @@
 <div>
     @using (Html.BeginForm("Index", "SchoolForum", FormMethod.Get))
     {
-        <p>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-search"></i>
+            </div>
             @Html.TextBox("SearchTerm", null, new { @class = "form-control", placeholder = "Search for..." })
-            <input type="submit" value="Search" class="btn btn-primary" />
-        </p>
+        </div>
+            @*<input type="submit" value="Search" class="btn btn-primary" />*@
     }
+    <br /><br />
 </div>
 <table class="table table-striped table-hover table-responsive">
     <tr>
