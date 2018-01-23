@@ -40,6 +40,14 @@ namespace SchoolForum.Migrations
                 var result = userManager.Create(user, "password");
                 userManager.AddToRole(user.Id, "teacher");
             }
+
+            if (!context.Roles.Any(x => x.Name == "student"))
+            {
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                roleManager.Create(new IdentityRole { Name = "student" });
+            }
+
             if (!context.Users.Any(x => x.UserName == "student@school.se"))
             {
                 var userStore = new UserStore<ApplicationUser>(context);

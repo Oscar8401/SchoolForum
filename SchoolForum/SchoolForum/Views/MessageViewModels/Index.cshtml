@@ -15,32 +15,41 @@
         </div>
     </div>
 </div>
-<span>
-    @Html.ActionLink(" ", "Index", "SchoolForum", new { area = "" }, new { @class = "glyphicon glyphicon-arrow-left" })<span> </span>
-    @if (User.Identity.IsAuthenticated)
-    {
-        @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus" })
-    }
-</span>
+    <div class="row">
+        <div class="col-md-11">
+            @Html.ActionLink(" ", "Index", "SchoolForum", new { area = "" }, new { @class = "glyphicon glyphicon-arrow-left" })
+        </div>
+        <div class="col-md-1">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus addRow" })
+            }
+        </div>
+    </div>
 <table class="table table-hover table-responsive table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            <i class="fa fa-text-width"></i>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Text)
+            @*@Html.DisplayNameFor(model => model.Text)*@
+            <i class="fa fa-file-text-o"></i>
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.NumberOfMessages)
         </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.User)
+            @*@Html.DisplayNameFor(model => model.User)*@
+            <i class="fa fa-user"></i>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostingDate)
+            @*@Html.DisplayNameFor(model => model.PostingDate)*@
+            <i class="fa fa-calendar"></i>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
+            <i class="fa fa-file-text"></i>
+            @*@Html.DisplayNameFor(model => model.CategoryName)*@
         </th>
         <th></th>
     </tr>
@@ -70,7 +79,7 @@
             {
                 @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-edit" })<span></span>
                 @*@Html.ActionLink(" ", "Details", new { id=item.Id }, new { @clss= "glyphicon glyphicon-align-justify"})<span></span>*@
-                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash" })<span></span>
+                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash removeButton" })<span></span>
             }
         </td>
     </tr>

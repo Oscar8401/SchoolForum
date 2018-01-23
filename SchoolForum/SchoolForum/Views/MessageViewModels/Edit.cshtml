@@ -21,6 +21,33 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
+            @*@Html.LabelFor(model => model.PostingDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10 fa fa-calendar">
+                @Html.DisplayFor(model => model.PostingDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.PostingDate)
+                @Html.ValidationMessageFor(model => model.PostingDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10 fa fa-user">
+                @Html.DisplayFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.User)
+                @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10 fa fa-text-width">
+                @Html.DisplayFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.CategoryName)
+                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
@@ -45,32 +72,8 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
-                  @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PostingDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PostingDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PostingDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink(" ", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })
+                @Html.ActionLink("Go back", "Index", null, new { @class = "btn btn-primary" })
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
