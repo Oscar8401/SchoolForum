@@ -13,6 +13,10 @@ namespace SchoolForum.Models
 
         public DateTime ReplyingDate { get; set; }
 
+        public string userReply { get; set; }
+
+        public int NumberOfReply { get; set; }
+
 
 
         //public ICollection<Message> Message { get; set; }

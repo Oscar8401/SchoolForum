@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -43,6 +45,11 @@ namespace SchoolForum.Models
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
 
+        
+        public virtual ICollection<Message> messages { get; set; }
+        public virtual ICollection<Categories> category { get; set; }
+        public virtual ICollection<Reply> replies { get; set; }
+
      }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -63,5 +70,7 @@ namespace SchoolForum.Models
         public System.Data.Entity.DbSet<SchoolForum.Models.Message> Messages { get; set; }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.Reply> Replies { get; set; }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.ViewModel.MessagesViewModel> MessagesViewModels { get; set; }
     }
 }

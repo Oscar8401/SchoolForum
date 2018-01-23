@@ -7,110 +7,111 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SchoolForum.Models;
+using SchoolForum.Models.ViewModel;
 
 namespace SchoolForum.Controllers
 {
-    public class MessagesController : Controller
+    public class MessageViewModelsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Messages
+        // GET: MessageViewModels
         public ActionResult Index()
         {
-            return View(db.Messages.ToList());
+            return View(db.MessagesViewModels.ToList());
         }
 
-        // GET: Messages/Details/5
+        // GET: MessageViewModels/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Message message = db.Messages.Find(id);
-            if (message == null)
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            if (messagesViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(message);
+            return View(messagesViewModel);
         }
 
-        // GET: Messages/Create
+        // GET: MessageViewModels/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Messages/Create
+        // POST: MessageViewModels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Text")] Message message)
+        public ActionResult Create([Bind(Include = "Id,Title,Text,NumberOfMessages,User,PostingDate,CategoryName")] MessagesViewModel messagesViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Messages.Add(message);
+                db.MessagesViewModels.Add(messagesViewModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(message);
+            return View(messagesViewModel);
         }
 
-        // GET: Messages/Edit/5
+        // GET: MessageViewModels/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Message message = db.Messages.Find(id);
-            if (message == null)
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            if (messagesViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(message);
+            return View(messagesViewModel);
         }
 
-        // POST: Messages/Edit/5
+        // POST: MessageViewModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Text")] Message message)
+        public ActionResult Edit([Bind(Include = "Id,Title,Text,NumberOfMessages,User,PostingDate,CategoryName")] MessagesViewModel messagesViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(message).State = EntityState.Modified;
+                db.Entry(messagesViewModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(message);
+            return View(messagesViewModel);
         }
 
-        // GET: Messages/Delete/5
+        // GET: MessageViewModels/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Message message = db.Messages.Find(id);
-            if (message == null)
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            if (messagesViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(message);
+            return View(messagesViewModel);
         }
 
-        // POST: Messages/Delete/5
+        // POST: MessageViewModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Message message = db.Messages.Find(id);
-            db.Messages.Remove(message);
+            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
+            db.MessagesViewModels.Remove(messagesViewModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

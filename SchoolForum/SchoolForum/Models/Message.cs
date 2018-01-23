@@ -29,6 +29,8 @@ namespace SchoolForum.Models
 
         public DateTime PostingDate { get; set; }
 
+        public int NumberOfMessage { get; set; }
+
 
 
         public virtual ApplicationUser users { get; set; }
