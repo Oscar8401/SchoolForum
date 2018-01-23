@@ -92,12 +92,7 @@ namespace SchoolForum.Models
 
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
-        public DateTime DateOfBirth { get; set; }
-
-        //public int RoleId { get; set; }
-        //public IEnumerable<IdentityRole> Roles { get; set; }
-
-         
+        public DateTime DateOfBirth { get; set; }        
     }
 
     public class ResetPasswordViewModel

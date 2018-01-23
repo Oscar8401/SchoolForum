@@ -16,11 +16,11 @@ namespace SchoolForum.Migrations
 
         protected override void Seed(SchoolForum.Models.ApplicationDbContext context)
         {
-            if (!context.Roles.Any(x => x.Name == "teacher"))
+            if (!context.Roles.Any(x => x.Name == "Teacher"))
             {
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
-                roleManager.Create(new IdentityRole { Name = "teacher" });
+                roleManager.Create(new IdentityRole { Name = "Teacher" });
             }
 
             if (!context.Users.Any(y => y.UserName == "teacher@school.se"))
@@ -38,14 +38,14 @@ namespace SchoolForum.Migrations
                     //Role = "Teacher"
                 };
                 var result = userManager.Create(user, "password");
-                userManager.AddToRole(user.Id, "teacher");
+                userManager.AddToRole(user.Id, "Teacher");
             }
 
-            if (!context.Roles.Any(x => x.Name == "student"))
+            if (!context.Roles.Any(x => x.Name == "Student"))
             {
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
-                roleManager.Create(new IdentityRole { Name = "student" });
+                roleManager.Create(new IdentityRole { Name = "Student" });
             }
 
             if (!context.Users.Any(x => x.UserName == "student@school.se"))

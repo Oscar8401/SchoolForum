@@ -2,14 +2,19 @@
 @{
     ViewBag.Title = "Register";
 }
-
-<h2>@ViewBag.Title.</h2>
-
+<br /><br />
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Register a new student</h4>
-    <hr />
+    <h4>Register a new user</h4>
+    <div class="form-horizontal">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Notice:</span>
+            All fields are required!
+        </div>
+        <br />
+    </div>
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div class="form-group">
@@ -19,16 +24,12 @@
         </div>
     </div>
 
-
     <div class="form-group">
         @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
     </div>
-
-
-
 
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -45,23 +46,12 @@
         </div>
     </div>
 
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-group">
+        @Html.Label("Role", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
-
-
-    @*<div class="form-group">
-        @Html.LabelFor(m => m.Roles, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Roles, new SelectList(Model.Roles, "Id", "Role"), "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Roles, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+            @Html.DropDownList("Role", (SelectList)ViewBag.Role, "Select a Role", new { @class = "form-control" })
+         </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })

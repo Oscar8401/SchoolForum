@@ -3,10 +3,18 @@
 @{
     ViewBag.Title = "Create";
 }
-<br /><br />
+<br />
+<h3>Create a new Category</h3>
+<br />
 @using (Html.BeginForm())
 {
-    <p class="alert alert-info">All fields are <strong>required</strong>.</p><br />
+    <div class="form-horizontal">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Notice:</span>
+            All fields are required!
+        </div>
+    </div>
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -37,7 +45,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink(" ", "Index", null, new { @class = "glyphicon glyphicon-arrow-left" })<span></span>
+                @Html.ActionLink("Go back", "Index", null, new { @class = "btn btn-primary" })<span></span>
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>

@@ -19,26 +19,9 @@ namespace SchoolForum.Controllers
         {
             return View(db.Categories.Where(x => x.Name.Contains(SearchTerm)|| SearchTerm == null).ToList());
         }
-
-        // GET: SchoolForum/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categories categories = db.Categories.Find(id);
-            if (categories == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categories);
-        }
-
-
         // GET: SchoolForum/Create
 
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             return View();
@@ -50,7 +33,7 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Members")] Categories categories)
         {
             if (ModelState.IsValid)
@@ -63,45 +46,8 @@ namespace SchoolForum.Controllers
             return View(categories);
         }
 
-
-        // GET: SchoolForum/Edit/5
-
-        [Authorize(Roles = "teacher")]
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categories categories = db.Categories.Find(id);
-            if (categories == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categories);
-        }
-
-        
-        // POST: SchoolForum/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "teacher")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Members")] Categories categories)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(categories).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(categories);
-        }
-
-
         // GET: SchoolForum/Delete/5
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -120,7 +66,7 @@ namespace SchoolForum.Controllers
         // POST: SchoolForum/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult DeleteConfirmed(int id)
         {
             Categories categories = db.Categories.Find(id);

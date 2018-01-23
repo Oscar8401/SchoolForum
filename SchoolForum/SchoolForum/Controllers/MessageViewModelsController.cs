@@ -20,25 +20,11 @@ namespace SchoolForum.Controllers
         {
             return View(db.MessagesViewModels.ToList());
         }
-
-        // GET: MessageViewModels/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MessagesViewModel messagesViewModel = db.MessagesViewModels.Find(id);
-            if (messagesViewModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(messagesViewModel);
-        }
-
         // GET: MessageViewModels/Create
         public ActionResult Create()
         {
+            ApplicationDbContext schoolForum = new ApplicationDbContext();
+            ViewBag.Category = new SelectList(schoolForum.Categories, "Id", "Name");
             return View();
         }
 
@@ -79,11 +65,17 @@ namespace SchoolForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Text,NumberOfMessages,User,PostingDate,CategoryName")] MessagesViewModel messagesViewModel)
+        public ActionResult Edit([Bind(Exclude = "User,CategoryName")] MessagesViewModel messagesViewModel)
         {
+            MessagesViewModel SchoolForumDB = db.MessagesViewModels.Single(x => x.Id == messagesViewModel.Id);
+            SchoolForumDB.Title = messagesViewModel.Title;
+            SchoolForumDB.Text = messagesViewModel.Text;
+            SchoolForumDB.PostingDate = DateTime.Now;
+            messagesViewModel.User = SchoolForumDB.User;
+            messagesViewModel.CategoryName = SchoolForumDB.CategoryName;
             if (ModelState.IsValid)
             {
-                db.Entry(messagesViewModel).State = EntityState.Modified;
+                ////db.Entry(messagesViewModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SchoolForum.Models;
-
+ 
 namespace SchoolForum.Controllers
 {
     [Authorize]
@@ -139,6 +139,8 @@ namespace SchoolForum.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ApplicationDbContext schoolForum = new ApplicationDbContext();
+            ViewBag.Role = new SelectList(schoolForum.Roles, "Id", "Name");
             return View();
         }
 

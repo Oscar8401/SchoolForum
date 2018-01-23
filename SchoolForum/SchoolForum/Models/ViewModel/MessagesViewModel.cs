@@ -35,10 +35,7 @@ namespace SchoolForum.Models.ViewModel
          public string User { get; set; }
 
         [Column(TypeName = "datetime2")]
-        [DisplayName("PostingDate")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime PostingDate { get; set; }
+          public DateTime PostingDate { get; set; }
 
         public string CategoryName { get; set; }
 

@@ -23,7 +23,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (User.IsInRole("teacher"))
+                    @if (User.IsInRole("Teacher"))
                     {
                         <li>@Html.ActionLink(" Users", "Index", "Students",new { area = ""}, new { @class= "fa fa-user"})</li>
                     }

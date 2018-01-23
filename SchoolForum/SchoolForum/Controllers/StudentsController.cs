@@ -31,26 +31,7 @@ namespace SchoolForum.Controllers
             return View(Studentlist);
         }
 
-        // GET: Members/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationuser = db.Users.Find(id);
-            if (applicationuser == null)
-            {
-                return HttpNotFound();
-            }
-            var userStore = new UserStore<ApplicationUser>(db);
-            var userManager = new UserManager<ApplicationUser>(userStore);
-            ICollection<string> rolename = userManager.GetRoles(applicationuser.Id);
-            Students member = new Students(applicationuser);
-            member.StudentRole = rolename;
-            return View(member);
-        }
-
+         
 
 
 
