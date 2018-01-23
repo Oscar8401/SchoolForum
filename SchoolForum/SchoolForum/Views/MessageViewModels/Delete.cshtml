@@ -4,12 +4,15 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Delete a message</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>MessagesViewModel</h4>
-    <hr />
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Notice:</span>
+        The message will remove from the database, and all the replies.
+    </div> 
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -65,8 +68,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink(" ", "Index", null, new { @class = "glyphicon glyphicon-arrow-left"})<span></span>
+            <input type="submit" value="Delete" class="btn btn-primary" />
         </div>
     }
 </div>
