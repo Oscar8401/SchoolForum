@@ -55,13 +55,13 @@
     </div>*@
 
 
-    @*<div class="form-group">
+    <div class="form-group">
         @Html.LabelFor(m => m.Role, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(m => m.Role, new SelectList(Model.Role, "Id", "ClassType"), "", new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
         </div>
-    </div>*@
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })

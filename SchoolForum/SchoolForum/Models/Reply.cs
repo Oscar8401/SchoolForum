@@ -11,9 +11,9 @@ namespace SchoolForum.Models
 
         public string TextReply { get; set; }
 
-        public DateTime ReplyingDate { get; set; }
+        public DateTime ReplyDate { get; set; }
 
-        public string userReply { get; set; }
+        public string UserReply { get; set; }
 
         public int NumberOfReply { get; set; }
 

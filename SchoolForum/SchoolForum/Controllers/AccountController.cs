@@ -151,7 +151,7 @@ namespace SchoolForum.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName, DateOfBirth = model.DateOfBirth};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName, DateOfBirth = model.DateOfBirth,};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 //if (result.Succeeded)
                 //{
@@ -385,7 +385,10 @@ namespace SchoolForum.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-
+        //public ActionResult GetRoles()
+        //{
+        //    var userRoles = new List<Role>
+        //}
         //
         // POST: /Account/LogOff
         [HttpPost]
