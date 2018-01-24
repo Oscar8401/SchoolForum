@@ -131,8 +131,8 @@ namespace SchoolForum.Controllers
         }
 
         // GET: /Account/Register
-        //[AllowAnonymous]
-        [Authorize(Roles ="Teacher")]
+        [AllowAnonymous]
+        //[Authorize(Roles ="Teacher")]
         public ActionResult Register()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -143,9 +143,9 @@ namespace SchoolForum.Controllers
 
         // POST: /Account/Register
         [HttpPost]
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Teacher")]
+        //[Authorize(Roles = "Teacher")]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             ApplicationDbContext db = new ApplicationDbContext();
