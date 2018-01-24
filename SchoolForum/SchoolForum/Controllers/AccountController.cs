@@ -222,7 +222,29 @@ namespace SchoolForum.Controllers
             return View(model);
         }
 
-        //
+        //public async Task<ActionResult> Details(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    var role = await RoleManager.FindByIdAsync(id);
+        //    var user = new List<ApplicationUser>();
+        //    foreach (var user in UserManager.Users.ToList())
+        //    {
+        //        if (await UserManager.IsInRoleAsync(user.Id, role.Name))
+        //        {
+        //            user.Add(user);
+        //        }
+        //    }
+        //    AccountViewModels vm = new AccountViewModels();
+        //    vm.User = user;
+        //    vm.Role = role;
+
+        //    return View(vm);
+
+        //}
+
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
@@ -385,11 +407,7 @@ namespace SchoolForum.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-        //public ActionResult GetRoles()
-        //{
-        //    var userRoles = new List<Role>
-        //}
-        //
+       
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
