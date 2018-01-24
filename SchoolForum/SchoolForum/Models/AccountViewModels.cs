@@ -85,14 +85,15 @@ namespace SchoolForum.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
+        
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+ 
+        [Range(1, 65, ErrorMessage = "Age has to be between 1 and 65")]
+        public int Age { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        [DataType(DataType.Date)]
-        public DateTime DateOfBirth { get; set; }        
+        public string Role { get; set; }
     }
 
     public class ResetPasswordViewModel

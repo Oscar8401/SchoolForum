@@ -32,10 +32,11 @@ namespace SchoolForum.Migrations
                 {
                     UserName = "teacher@school.se",
                     Email = "teacher@school.se",
-                    FirstName = "Teacher",
-                    LastName = "teacher",
-                    DateOfBirth = DateTime.Now,
-                    //Role = "Teacher"
+                    FirstName = "John",
+                    LastName = "Smith",
+                    Age = 42,
+                    Role = "Teacher",
+                     
                 };
                 var result = userManager.Create(user, "password");
                 userManager.AddToRole(user.Id, "Teacher");
@@ -56,11 +57,11 @@ namespace SchoolForum.Migrations
                 {
                     UserName = "student@school.se",
                     Email = "student@school.se",
-                    FirstName = "Student",
-                    LastName = "student",
-                    DateOfBirth = DateTime.Now,
-                    //Role = "Student"
-                };
+                    FirstName = "Samantha",
+                    LastName = "Lopez",
+                    Age = 12,
+                    Role = "Student"
+                 };
                 var result = userManager.Create(user, "password");
             }
             context.Categories.AddOrUpdate(x => x.Name,

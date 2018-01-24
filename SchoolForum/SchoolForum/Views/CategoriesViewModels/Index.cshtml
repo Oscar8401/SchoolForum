@@ -1,0 +1,97 @@
+﻿@model IEnumerable<SchoolForum.Models.ViewModel.CategoriesViewModel>
+ 
+<div class="jumbotron">
+    <div class="container">
+        <div class="animated jackInTheBox text-center">
+            <h3>Lexicon it-proffs</h3>
+            <p>
+                Welcome to Lexicon forum.<br />
+                Please contact the admin for more information.
+            </p>
+
+        </div>
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm("Index", "CategoriesViewModels", FormMethod.Get))
+    {
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-search"></i>
+            </div>
+            @Html.TextBox("SearchTerm", null, new { @class = "form-control", placeholder = "Search for..." })
+        </div>
+     }
+    <br /><br />
+</div>
+
+<div>
+    @if (User.IsInRole("Teacher"))
+    {
+        @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus addRow"})
+    }
+</div>
+<table class="table table-striped table-hover table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Members)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemebersCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfMessages)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CreatingTime)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.User)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Members)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemebersCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfMessages)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CreatingTime)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.User)
+        </td>*@
+        <td>           
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink(" ", "Index", "MessageViewModels", new { id = item.Id }, new { @class = "fa fa-comment" })<span></span>
+                if (User.IsInRole("Teacher"))
+                {
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "fa fa-remove addRow"})<span></span>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "fa fa-list"})<span></span>
+                }
+            }
+        </td>
+    </tr>
+}
+
+</table>

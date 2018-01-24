@@ -1,7 +1,9 @@
 ﻿using SchoolForum.Utility;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolForum.Models
 {
@@ -24,17 +26,13 @@ namespace SchoolForum.Models
         [DisplayFormat(NullDisplayText = "Undefined")]
         public string Description { get; set; }
 
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatingTime { get; set; }
+
 
         public string Members{ get; set; }
-
-        //public string SearchTerm { get; set; }
-
-        //public virtual Message message { get; set; }
         public ICollection<Message> messages { get; set; }
-        //public ICollection<Categories> AttendedCategory { get; set; }
         public ICollection<ApplicationUser> user { get; set; }
 
-        //public ICollection<string> Student { get; set; }
-        //public ICollection<string> StudentRole { get; internal set; }
     }
 }

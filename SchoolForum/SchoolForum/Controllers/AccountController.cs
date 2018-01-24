@@ -52,7 +52,6 @@ namespace SchoolForum.Controllers
             }
         }
 
-        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -61,7 +60,6 @@ namespace SchoolForum.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -91,7 +89,6 @@ namespace SchoolForum.Controllers
             }
         }
 
-        //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -104,7 +101,6 @@ namespace SchoolForum.Controllers
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
         // POST: /Account/VerifyCode
         [HttpPost]
         [AllowAnonymous]
@@ -134,48 +130,44 @@ namespace SchoolForum.Controllers
             }
         }
 
-        //
         // GET: /Account/Register
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize(Roles ="Teacher")]
         public ActionResult Register()
         {
-            ApplicationDbContext schoolForum = new ApplicationDbContext();
-            ViewBag.Role = new SelectList(schoolForum.Roles, "Id", "Name");
+            ApplicationDbContext db = new ApplicationDbContext();
+            ViewBag.Role = new SelectList(db.Roles, "Id", "Name");
+            ViewBag.Category = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
-        //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName, DateOfBirth = model.DateOfBirth};
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName =model.FirstName,
+                    LastName =model.LastName,
+                    Age = model.Age,
+                    Role =model.Role
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                //if (result.Succeeded)
-                //{
-                //    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                //    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                //    // Send an email with this link
-                //    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                //    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                //    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                //    return RedirectToAction("Index", "SchoolForum");
-                //}
-                //AddErrors(result);
+                if (result.Succeeded)
+                {    
+                    return RedirectToAction("Index", "SchoolForum");
+                }
             }
-
-            // If we got this far, something failed, redisplay form
-            //return View(model);
-            return RedirectToAction("Index", "SchoolForum");
+            return View(model);
         }
-
-        //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
@@ -188,15 +180,13 @@ namespace SchoolForum.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             return View();
         }
-
-        //
+ 
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -224,7 +214,6 @@ namespace SchoolForum.Controllers
             return View(model);
         }
 
-        //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
@@ -232,7 +221,6 @@ namespace SchoolForum.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
@@ -240,7 +228,6 @@ namespace SchoolForum.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -266,7 +253,6 @@ namespace SchoolForum.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
@@ -274,7 +260,6 @@ namespace SchoolForum.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -285,7 +270,6 @@ namespace SchoolForum.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        //
         // GET: /Account/SendCode
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
@@ -300,7 +284,6 @@ namespace SchoolForum.Controllers
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
         // POST: /Account/SendCode
         [HttpPost]
         [AllowAnonymous]
@@ -320,7 +303,6 @@ namespace SchoolForum.Controllers
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
-        //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -350,7 +332,6 @@ namespace SchoolForum.Controllers
             }
         }
 
-        //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
@@ -388,7 +369,6 @@ namespace SchoolForum.Controllers
             return View(model);
         }
 
-        //
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -398,7 +378,6 @@ namespace SchoolForum.Controllers
             return RedirectToAction("Index", "SchoolForum");
         }
 
-        //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()

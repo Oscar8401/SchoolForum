@@ -40,12 +40,13 @@ namespace SchoolForum.Models
 
         public string FullName { get { return FirstName + " " + LastName; } }
 
-        [Required(ErrorMessage ="Please enter the date of birth")]
-        [Column(TypeName= "datetime2")]
-        [DataType(DataType.DateTime)]
-        public DateTime DateOfBirth { get; set; }
+        [Range(1, 65, ErrorMessage = "Age has to be between 1 and 65")]
+        public int Age { get; set; }
 
-        
+        public string Role { get; set; }
+
+        public int MembersCount { get; set; }
+
         public virtual ICollection<Message> messages { get; set; }
         public virtual ICollection<Categories> category { get; set; }
         public virtual ICollection<Reply> replies { get; set; }
@@ -72,5 +73,7 @@ namespace SchoolForum.Models
         public System.Data.Entity.DbSet<SchoolForum.Models.Reply> Replies { get; set; }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.ViewModel.MessagesViewModel> MessagesViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.ViewModel.CategoriesViewModel> CategoriesViewModels { get; set; }
     }
 }
