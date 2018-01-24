@@ -136,8 +136,8 @@ namespace SchoolForum.Controllers
         public ActionResult Register()
         {
             ApplicationDbContext db = new ApplicationDbContext();
-            ViewBag.Role = new SelectList(db.Roles, "Id", "Name");
-            ViewBag.Category = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.Role = new SelectList(db.Roles.ToList(), "Id", "Name");
+            ViewBag.Category = new SelectList(db.Categories.ToList(), "Id", "Name");
             return View();
         }
 
@@ -155,14 +155,14 @@ namespace SchoolForum.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    FirstName =model.FirstName,
-                    LastName =model.LastName,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
                     Age = model.Age,
-                    Role =model.Role
+                    Role = model.Role
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                {    
+                {
                     return RedirectToAction("Index", "SchoolForum");
                 }
             }

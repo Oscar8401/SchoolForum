@@ -93,6 +93,8 @@ namespace SchoolForum.Models
         [Range(1, 65, ErrorMessage = "Age has to be between 1 and 65")]
         public int Age { get; set; }
 
+        [Required]
+        [Display(Name = "UserRoles")]
         public string Role { get; set; }
     }
 

@@ -50,6 +50,7 @@ namespace SchoolForum.Models
         public virtual ICollection<Message> messages { get; set; }
         public virtual ICollection<Categories> category { get; set; }
         public virtual ICollection<Reply> replies { get; set; }
+        
 
      }
 
@@ -75,5 +76,7 @@ namespace SchoolForum.Models
         public System.Data.Entity.DbSet<SchoolForum.Models.ViewModel.MessagesViewModel> MessagesViewModels { get; set; }
 
         public System.Data.Entity.DbSet<SchoolForum.Models.ViewModel.CategoriesViewModel> CategoriesViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<SchoolForum.Models.ViewModel.UsersViewModels> UsersViewModels { get; set; }
     }
 }
