@@ -30,6 +30,8 @@ namespace SchoolForum.Models
         public DateTime CreatingTime { get; set; }
 
 
+
+
         public string Members{ get; set; }
         public ICollection<Message> messages { get; set; }
         public ICollection<ApplicationUser> user { get; set; }
